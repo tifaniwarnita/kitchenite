@@ -14,6 +14,7 @@ class CreateInstructionsTable extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('step_number');
             $table->longText('explanation');
             $table->integer('recipe_id');
             $table->timestamps();
