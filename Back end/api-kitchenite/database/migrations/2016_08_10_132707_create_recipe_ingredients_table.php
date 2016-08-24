@@ -16,6 +16,7 @@ class CreateRecipeIngredientsTable extends Migration
             $table->increments('id');
             $table->integer('recipe_id');
             $table->integer('ingredient_id');
+            $table->float('ingredient_amount');
             $table->timestamps();
         });
     }

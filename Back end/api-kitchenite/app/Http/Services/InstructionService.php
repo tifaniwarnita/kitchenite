@@ -12,8 +12,7 @@ use App\Instruction;
 class InstructionService {
     public function getInstructionByRecipe($recipeId) {
         $instructions = Instruction::where('recipe_id', '=', $recipeId)
-            ->orderBy('step_number', 'asc')
-            ->get();
+            ->orderBy('step_number', 'asc');
         return $instructions;
     }
 }

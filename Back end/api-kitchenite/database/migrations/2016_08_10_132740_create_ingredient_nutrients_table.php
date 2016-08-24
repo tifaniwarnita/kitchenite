@@ -14,7 +14,7 @@ class CreateIngredientNutrientsTable extends Migration
     {
         Schema::create('ingredient_nutrients', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('amount');
+            $table->float('nutrition_amount');
             $table->integer('ingredient_id');
             $table->integer('nutrient_id');
             $table->timestamps();
