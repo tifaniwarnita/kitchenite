@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="8dp"
     tools:context="com.gencat.kitchenite.HomeFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -14,7 +14,9 @@
         <ListView
             android:id="@+id/feed_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp"">
 
         </ListView>
 

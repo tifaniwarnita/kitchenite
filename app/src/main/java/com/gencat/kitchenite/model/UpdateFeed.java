@@ -25,4 +25,30 @@ public class UpdateFeed extends Feed implements Serializable {
         this.recipeName = recipeName;
         this.content = content;
     }
+
+    public String getUpdateType() {
+        return updateType;
+    }
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getContent() {
+        return content;
+    }
 }

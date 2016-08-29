@@ -1,12 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:elevation="2dp"
-    android:background="@android:color/white"
-    tools:context="com.gencat.kitchenite.view.RecipeFeedFragment">
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
                 android:id="@+id/user_picture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/tifani"/>
+                android:src="@drawable/placeholder_user"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -49,10 +48,10 @@
         android:background="@color/colorAccent">
 
         <TextView
-            android:id="@+id/recipe_difficulties"
+            android:id="@+id/recipe_entree"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@color/difMedium"
+            android:background="@color/main_course"
             android:textAlignment="center"
             android:gravity="center"
             android:text="M"
@@ -80,7 +79,7 @@
             android:id="@+id/recipe_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/recipe"
+            android:src="@drawable/placeholder_recipe_photo"
             android:scaleType="centerCrop"/>
 
         <LinearLayout

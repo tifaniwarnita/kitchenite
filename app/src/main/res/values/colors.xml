@@ -12,7 +12,8 @@
     <color name="textTabSelected">#FFFFFF</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
-    <color name="difMedium">#FDC005</color>
-    <color name="difDifficult">#E71F63</color>
+    <color name="appetizer">#00a51d</color>
+    <color name="main_course">#FDC005</color>
+    <color name="dessert">#E71F63</color>
 
 </resources>

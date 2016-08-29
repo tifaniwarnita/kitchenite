@@ -8,21 +8,26 @@ import java.io.Serializable;
 public class RecipeFeed extends Feed implements Serializable {
     private String recipeId;
     private String recipeName;
-    private int difficulties;
+    private String recipePhotoURL;
+    private char entree;
     private int made;
-    private int stars;
+    private float stars;
     private int comments;
+    private boolean bookmarked;
 
-    public RecipeFeed(String recipeId, String recipeName, int difficulties, int made, int stars, int comments, String userId, String userName) {
+    public RecipeFeed(String recipeId, String recipeName, String recipePhotoURL, char entree, int made, float stars, int comments, boolean bookmarked, String userId, String userName, String userPictureURL) {
         this.recipeId = recipeId;
         this.recipeName = recipeName;
-        this.difficulties = difficulties;
+        this.recipePhotoURL = recipePhotoURL;
+        this.entree = entree;
         this.made = made;
         this.stars = stars;
         this.comments = comments;
+        this.bookmarked = bookmarked;
         super.type = super.RECIPE;
         super.userId = userId;
         super.userName = userName;
+        super.userPictureURL = userPictureURL;
     }
 
     public String getRecipeId() {
@@ -33,15 +38,19 @@ public class RecipeFeed extends Feed implements Serializable {
         return recipeName;
     }
 
-    public int getDifficulties() {
-        return difficulties;
+    public String getRecipePhotoURL() {
+        return recipePhotoURL;
+    }
+
+    public char getEntree() {
+        return entree;
     }
 
     public int getMade() {
         return made;
     }
 
-    public int getStars() {
+    public float getStars() {
         return stars;
     }
 
@@ -49,11 +58,7 @@ public class RecipeFeed extends Feed implements Serializable {
         return comments;
     }
 
-    public String getUserId() {
-        return super.userId;
-    }
-
-    public String getUserName() {
-        return super.userName;
+    public boolean isBookmarked() {
+        return bookmarked;
     }
 }
