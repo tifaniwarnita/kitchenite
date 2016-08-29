@@ -12,4 +12,7 @@
     <color name="textTabSelected">#FFFFFF</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+    <color name="difMedium">#FDC005</color>
+    <color name="difDifficult">#E71F63</color>
+
 </resources>

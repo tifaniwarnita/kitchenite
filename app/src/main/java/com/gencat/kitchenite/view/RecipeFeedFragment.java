@@ -1,7 +1,6 @@
 package com.gencat.kitchenite.view;
 
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,51 +8,39 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gencat.kitchenite.R;
+import com.gencat.kitchenite.model.RecipeFeed;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RecipeFeedFragment#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class RecipeFeedFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String RECIPE_FEED = "recipe";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecipeFeed recipeFeed;
 
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecipeFeedFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RecipeFeedFragment newInstance(String param1, String param2) {
-        RecipeFeedFragment fragment = new RecipeFeedFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
     public RecipeFeedFragment() {
         // Required empty public constructor
+    }
+
+    public static RecipeFeedFragment newInstance(RecipeFeed recipeFeed) {
+        RecipeFeedFragment fragment = new RecipeFeedFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(RECIPE_FEED, recipeFeed);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            recipeFeed = (RecipeFeed) getArguments().getSerializable(RECIPE_FEED);
         }
     }
 
