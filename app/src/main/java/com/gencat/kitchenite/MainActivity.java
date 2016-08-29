@@ -8,11 +8,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.gencat.kitchenite.view.RecipeFeedFragment;
 
@@ -50,6 +53,20 @@ public class MainActivity extends AppCompatActivity
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
+
+        LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        final View customActionBarView = inflater.inflate(
+                R.layout.action_bar_custom_view, null);
+
+        /* Show the custom action bar view and hide the normal Home icon and title */
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setCustomView(customActionBarView);
+        actionBar.setDisplayShowCustomEnabled(true);
     }
 
     @Override
