@@ -15,5 +15,6 @@
     <color name="appetizer">#00a51d</color>
     <color name="main_course">#FDC005</color>
     <color name="dessert">#E71F63</color>
+    <color name="light_blue">#ADDAF1</color>
 
 </resources>
