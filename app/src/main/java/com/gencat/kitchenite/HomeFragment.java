@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.gencat.kitchenite.model.Feed;
@@ -60,11 +61,14 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home,null);
+        FrameLayout frameLayout = (FrameLayout) v.findViewById(R.id.container);
         ListView listView = (ListView) v.findViewById(R.id.feed_list);
         if (type != null) {
             if (type.equals(TabFragment.HOME)) {
+                frameLayout.setBackgroundColor(getActivity().getResources().getColor(R.color.divider));
                 listView.setAdapter(new FeedAdapter(getContext(), Fixtures.getHomeFeeds())); //TODO
             } else if (type.equals(TabFragment.RECENT)) {
+                frameLayout.setBackgroundColor(getActivity().getResources().getColor(R.color.colorPrimaryLight));
                 listView.setAdapter(new FeedAdapter(getContext(), Fixtures.getUpdateFeeds())); //TODO
             }
         }
