@@ -1,13 +1,26 @@
 package com.gencat.kitchenite.view;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.gencat.kitchenite.R;
+import com.gencat.kitchenite.model.Fixtures;
+import com.gencat.kitchenite.model.RecipeFeed;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +73,48 @@ public class RecipeDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_detail, container, false);
+        View v = inflater.inflate(R.layout.fragment_recipe_detail, container, false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Ayam Goreng Mentega");
+
+        CircleImageView userPicture = (CircleImageView) v.findViewById(R.id.user_picture);
+        TextView userName = (TextView) v.findViewById(R.id.user_name);
+        ImageView recipePhoto = (ImageView) v.findViewById(R.id.recipe_photo);
+        Button made = (Button) v.findViewById(R.id.made);
+        ImageButton star1 = (ImageButton) v.findViewById(R.id.star_1);
+        ImageButton star2 = (ImageButton) v.findViewById(R.id.star_2);
+        ImageButton star3 = (ImageButton) v.findViewById(R.id.star_3);
+        ImageButton star4 = (ImageButton) v.findViewById(R.id.star_4);
+        ImageButton star5 = (ImageButton) v.findViewById(R.id.star_5);
+        ArrayList<ImageButton> stars = new ArrayList<>();
+        stars.add(star1);
+        stars.add(star2);
+        stars.add(star3);
+        stars.add(star4);
+        stars.add(star5);
+
+        Context context = getContext();
+        RecipeFeed recipe = (RecipeFeed) Fixtures.getHomeFeeds().get(0);
+        Picasso.with(context)
+                .load(recipe.getUserPictureURL())
+                .placeholder(R.drawable.placeholder_user)
+                .error(R.drawable.placeholder_user)
+                .into(userPicture);
+        userName.setText(recipe.getUserName());
+        Picasso.with(context)
+                .load(recipe.getRecipePhotoURL())
+                .placeholder(R.drawable.circle_animation)
+                .error(R.drawable.placeholder_recipe_photo)
+                .into(recipePhoto);
+        made.setText(String.valueOf(recipe.getMade()));
+        int roundStars = (int) Math.floor(recipe.getStars());
+        for(int i=0; i<roundStars; i++) {
+            stars.get(i).setImageResource(R.drawable.ic_full_star);
+        }
+        if (recipe.getStars() > roundStars) {
+            stars.get(roundStars).setImageResource(R.drawable.ic_half_star);
+        }
+
+        return v;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.gencat.kitchenite.model;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gencat.kitchenite.ChildActivity;
 import com.gencat.kitchenite.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -111,6 +111,15 @@ public class FeedAdapter extends BaseAdapter {
                 } else {
                     bookmark.setImageResource(R.drawable.ic_not_bookmarked);
                 }
+
+                // Actions
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, ChildActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
             } else {
                 assert((feed.getType().equals(Feed.UPDATE)));
                 v = inflater.inflate(R.layout.fragment_update_feed, null);
