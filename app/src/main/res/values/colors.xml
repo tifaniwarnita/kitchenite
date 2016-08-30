@@ -16,5 +16,6 @@
     <color name="main_course">#FDC005</color>
     <color name="dessert">#E71F63</color>
     <color name="light_blue">#ADDAF1</color>
+    <color name="profile_item_background">#88000000</color>
 
 </resources>
