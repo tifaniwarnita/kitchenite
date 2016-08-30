@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Tifani on 8/29/2016.
  */
@@ -54,7 +56,7 @@ public class FeedAdapter extends BaseAdapter {
             if (feed.getType().equals(Feed.RECIPE)) {
                 v = inflater.inflate(R.layout.fragment_recipe_feed, null);
 
-                ImageView userPicture = (ImageView) v.findViewById(R.id.user_picture);
+                CircleImageView userPicture = (CircleImageView) v.findViewById(R.id.user_picture);
                 TextView userName = (TextView) v.findViewById(R.id.user_name);
                 TextView recipeEntree = (TextView) v.findViewById(R.id.recipe_entree);
                 TextView recipeName = (TextView) v.findViewById(R.id.recipe_name);
@@ -113,7 +115,7 @@ public class FeedAdapter extends BaseAdapter {
                 assert((feed.getType().equals(Feed.UPDATE)));
                 v = inflater.inflate(R.layout.fragment_update_feed, null);
 
-                ImageView userPicture = (ImageView) v.findViewById(R.id.user_picture);
+                CircleImageView userPicture = (CircleImageView) v.findViewById(R.id.user_picture);
                 TextView userName = (TextView) v.findViewById(R.id.user_name);
                 TextView content = (TextView) v.findViewById(R.id.feed_content);
                 TextView detail = (TextView) v.findViewById(R.id.feed_detail);
