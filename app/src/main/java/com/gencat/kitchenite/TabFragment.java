@@ -11,10 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gencat.kitchenite.model.Fixtures;
+
 public class TabFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 4;
+
+    public static String HOME = "home";
+    public static String RECENT = "recent";
+    public static String PROFILE = "profile";
+    public static String NOTIFICATION = "notification";
 
     private Integer[] tabIcons = {
             R.drawable.ic_tab_home,
@@ -73,10 +80,10 @@ public class TabFragment extends Fragment {
         {
 
             switch (position){
-                case 0 : return new HomeFragment();
-                case 1 : return new HomeFragment();
-                case 2 : return new HomeFragment();
-                case 3 : return new HomeFragment();
+                case 0 : return HomeFragment.newInstance(HOME, Fixtures.getHomeFeeds()); //TODO:
+                case 1 : return HomeFragment.newInstance(RECENT, Fixtures.getUpdateFeeds()); //TODO:
+                case 2 : return HomeFragment.newInstance(PROFILE, null);
+                case 3 : return HomeFragment.newInstance(NOTIFICATION, null);
             }
             return null;
         }

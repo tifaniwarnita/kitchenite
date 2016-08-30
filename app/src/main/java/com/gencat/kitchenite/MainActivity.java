@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.gencat.kitchenite.model.Fixtures;
 import com.gencat.kitchenite.view.RecipeFeedFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        Fixtures.initializeFixtures();
 
         /**
          * Lets inflate the very first fragment

@@ -48,34 +48,35 @@ public class FeedAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = inflater.inflate(R.layout.fragment_recipe_feed, null);
-
-        ImageView userPicture = (ImageView) v.findViewById(R.id.user_picture);
-        TextView userName = (TextView) v.findViewById(R.id.user_name);
-        TextView recipeEntree = (TextView) v.findViewById(R.id.recipe_entree);
-        TextView recipeName = (TextView) v.findViewById(R.id.recipe_name);
-        ImageView recipePhoto = (ImageView) v.findViewById(R.id.recipe_photo);
-        Button made = (Button) v.findViewById(R.id.made);
-        ImageButton star1 = (ImageButton) v.findViewById(R.id.star_1);
-        ImageButton star2 = (ImageButton) v.findViewById(R.id.star_2);
-        ImageButton star3 = (ImageButton) v.findViewById(R.id.star_3);
-        ImageButton star4 = (ImageButton) v.findViewById(R.id.star_4);
-        ImageButton star5 = (ImageButton) v.findViewById(R.id.star_5);
-        ArrayList<ImageButton> stars = new ArrayList<>();
-        stars.add(star1);
-        stars.add(star2);
-        stars.add(star3);
-        stars.add(star4);
-        stars.add(star5);
-        Button comments = (Button) v.findViewById(R.id.comments);
-        ImageButton bookmark = (ImageButton) v.findViewById(R.id.bookmark);
-
+        View v = null;
         if (feeds != null) {
             Feed feed = feeds.get(position);
             if (feed.getType().equals(Feed.RECIPE)) {
+                v = inflater.inflate(R.layout.fragment_recipe_feed, null);
+
+                ImageView userPicture = (ImageView) v.findViewById(R.id.user_picture);
+                TextView userName = (TextView) v.findViewById(R.id.user_name);
+                TextView recipeEntree = (TextView) v.findViewById(R.id.recipe_entree);
+                TextView recipeName = (TextView) v.findViewById(R.id.recipe_name);
+                ImageView recipePhoto = (ImageView) v.findViewById(R.id.recipe_photo);
+                Button made = (Button) v.findViewById(R.id.made);
+                ImageButton star1 = (ImageButton) v.findViewById(R.id.star_1);
+                ImageButton star2 = (ImageButton) v.findViewById(R.id.star_2);
+                ImageButton star3 = (ImageButton) v.findViewById(R.id.star_3);
+                ImageButton star4 = (ImageButton) v.findViewById(R.id.star_4);
+                ImageButton star5 = (ImageButton) v.findViewById(R.id.star_5);
+                ArrayList<ImageButton> stars = new ArrayList<>();
+                stars.add(star1);
+                stars.add(star2);
+                stars.add(star3);
+                stars.add(star4);
+                stars.add(star5);
+                Button comments = (Button) v.findViewById(R.id.comments);
+                ImageButton bookmark = (ImageButton) v.findViewById(R.id.bookmark);
+
                 RecipeFeed recipe = (RecipeFeed) feed;
                 Picasso.with(context)
-                        .load(feeds.get(position).getUserPictureURL())
+                        .load(recipe.getUserPictureURL())
                         .placeholder(R.drawable.placeholder_user)
                         .error(R.drawable.placeholder_user)
                         .into(userPicture);
@@ -108,6 +109,25 @@ public class FeedAdapter extends BaseAdapter {
                 } else {
                     bookmark.setImageResource(R.drawable.ic_not_bookmarked);
                 }
+            } else {
+                assert((feed.getType().equals(Feed.UPDATE)));
+                v = inflater.inflate(R.layout.fragment_update_feed, null);
+
+                ImageView userPicture = (ImageView) v.findViewById(R.id.user_picture);
+                TextView userName = (TextView) v.findViewById(R.id.user_name);
+                TextView content = (TextView) v.findViewById(R.id.feed_content);
+                TextView detail = (TextView) v.findViewById(R.id.feed_detail);
+
+                UpdateFeed update = (UpdateFeed) feed;
+                Picasso.with(context)
+                        .load(update.getUserPictureURL())
+                        .placeholder(R.drawable.placeholder_user)
+                        .error(R.drawable.placeholder_user)
+                        .into(userPicture);
+                userName.setText(update.getUserName());
+                content.setText(update.getContent());
+                detail.setText(update.getRecipeName()); //TODO: follow atau made
+
             }
         }
 

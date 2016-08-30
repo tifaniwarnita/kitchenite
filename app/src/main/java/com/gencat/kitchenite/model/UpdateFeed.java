@@ -19,11 +19,15 @@ public class UpdateFeed extends Feed implements Serializable {
     private String userName;
     private String content;
 
-    public UpdateFeed(String updateType, String recipeId, String recipeName, String content) {
+    public UpdateFeed(String updateType, String recipeId, String recipeName, String content, String userId, String userName, String userPictureURL) {
         this.updateType = updateType;
         this.recipeId = recipeId;
         this.recipeName = recipeName;
         this.content = content;
+        super.userId = userId;
+        super.userName = userName;
+        super.userPictureURL = userPictureURL;
+        super.type = UPDATE;
     }
 
     public String getUpdateType() {
@@ -36,16 +40,6 @@ public class UpdateFeed extends Feed implements Serializable {
 
     public String getRecipeName() {
         return recipeName;
-    }
-
-    @Override
-    public String getUserId() {
-        return userId;
-    }
-
-    @Override
-    public String getUserName() {
-        return userName;
     }
 
     public String getContent() {
