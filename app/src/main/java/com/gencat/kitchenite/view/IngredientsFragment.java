@@ -9,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.gencat.kitchenite.R;
-import com.gencat.kitchenite.model.Fixtures;
 import com.gencat.kitchenite.model.Ingredient;
-import com.gencat.kitchenite.model.IngredientsAdapter;
+import com.gencat.kitchenite.model.IngredientAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -82,7 +80,7 @@ public class IngredientsFragment extends Fragment {
         ingredients.add(new Ingredient(new ArrayList<>(Arrays.asList("1 potong", "ayam kampung"))));
         ingredients.add(new Ingredient(new ArrayList<>(Arrays.asList("3 sendok", "kecap asin"))));
 
-        listView.setAdapter(new IngredientsAdapter(getContext(), ingredients));
+        listView.setAdapter(new IngredientAdapter(getContext(), ingredients));
 
         return v;
     }
