@@ -16,6 +16,10 @@
     <color name="main_course">#FDC005</color>
     <color name="dessert">#E71F63</color>
     <color name="light_blue">#ADDAF1</color>
+    <color name="dark_pink">#FFCDD2</color>
+    <color name="dark_pink_divider">#FFE3E6</color>
+    <color name="light_pink">#FFE4E8</color>
+    <color name="light_pink_divider">#FFEEEF</color>
     <color name="profile_item_background">#88000000</color>
 
 </resources>

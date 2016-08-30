@@ -6,8 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.gencat.kitchenite.R;
+import com.gencat.kitchenite.model.Nutrition;
+import com.gencat.kitchenite.model.NutritionAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +66,22 @@ public class NutritionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nutrition, container, false);
+        View v = inflater.inflate(R.layout.fragment_nutrition, container, false);
+        ListView listView = (ListView) v.findViewById(R.id.nutrition_list);
+        ArrayList<Nutrition> nutritions = new ArrayList<>();
+        nutritions.add(new Nutrition("Energi", "3121 kJ"));
+        nutritions.add(new Nutrition("Lemak", "23.00 g"));
+        nutritions.add(new Nutrition("Lemak Jenuh", "3.00 g"));
+        nutritions.add(new Nutrition("Karbohidrat", "89.00 g"));
+        nutritions.add(new Nutrition("Protein", "43.00 g"));
+        nutritions.add(new Nutrition("Vitamin A", "2.00 g"));
+        nutritions.add(new Nutrition("Vitamin B", "4.00 g"));
+        nutritions.add(new Nutrition("Vitamin B12", "1.00 g"));
+        nutritions.add(new Nutrition("Vitamin E", "1.00 g"));
+
+        listView.setAdapter(new NutritionAdapter(getContext(), nutritions));
+
+        return v;
     }
 
 }
