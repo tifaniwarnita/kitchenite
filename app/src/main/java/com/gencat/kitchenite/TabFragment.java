@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gencat.kitchenite.model.Fixtures;
+import com.gencat.kitchenite.view.NotificationFragment;
 import com.gencat.kitchenite.view.ProfileFragment;
 
 public class TabFragment extends Fragment {
@@ -84,7 +85,7 @@ public class TabFragment extends Fragment {
                 case 0 : return HomeFragment.newInstance(HOME, Fixtures.getHomeFeeds()); //TODO:
                 case 1 : return HomeFragment.newInstance(RECENT, Fixtures.getUpdateFeeds()); //TODO:
                 case 2 : return new ProfileFragment();
-                case 3 : return HomeFragment.newInstance(NOTIFICATION, null);
+                case 3 : return new NotificationFragment();
             }
             return null;
         }
