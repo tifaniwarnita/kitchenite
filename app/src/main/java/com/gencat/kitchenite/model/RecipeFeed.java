@@ -61,4 +61,8 @@ public class RecipeFeed extends Feed implements Serializable {
     public boolean isBookmarked() {
         return bookmarked;
     }
+
+    public void changeBookmark() {
+        bookmarked = !bookmarked;
+    }
 }

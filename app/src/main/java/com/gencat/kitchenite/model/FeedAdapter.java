@@ -9,7 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gencat.kitchenite.ChildActivity;
 import com.gencat.kitchenite.R;
@@ -26,6 +28,7 @@ public class FeedAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Feed> feeds;
     private static LayoutInflater inflater = null;
+    private ImageButton bookmark;
 
     public FeedAdapter(Context context, ArrayList<Feed> feeds) {
         this.context = context;
@@ -49,7 +52,7 @@ public class FeedAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = null;
         if (feeds != null) {
             Feed feed = feeds.get(position);
@@ -58,6 +61,7 @@ public class FeedAdapter extends BaseAdapter {
 
                 CircleImageView userPicture = (CircleImageView) v.findViewById(R.id.user_picture);
                 TextView userName = (TextView) v.findViewById(R.id.user_name);
+                LinearLayout linearLayout = (LinearLayout) v.findViewById(R.id.clickable_recipe);
                 TextView recipeEntree = (TextView) v.findViewById(R.id.recipe_entree);
                 TextView recipeName = (TextView) v.findViewById(R.id.recipe_name);
                 ImageView recipePhoto = (ImageView) v.findViewById(R.id.recipe_photo);
@@ -74,7 +78,7 @@ public class FeedAdapter extends BaseAdapter {
                 stars.add(star4);
                 stars.add(star5);
                 Button comments = (Button) v.findViewById(R.id.comments);
-                ImageButton bookmark = (ImageButton) v.findViewById(R.id.bookmark);
+                bookmark = (ImageButton) v.findViewById(R.id.bookmark);
 
                 RecipeFeed recipe = (RecipeFeed) feed;
                 Picasso.with(context)
@@ -113,11 +117,20 @@ public class FeedAdapter extends BaseAdapter {
                 }
 
                 // Actions
-                v.setOnClickListener(new View.OnClickListener() {
+                View.OnClickListener viewRecipe = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, ChildActivity.class);
                         context.startActivity(intent);
+                    }
+                };
+                linearLayout.setOnClickListener(viewRecipe);
+                recipePhoto.setOnClickListener(viewRecipe);
+
+                bookmark.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changeRecipeBookmark(position);
                     }
                 });
             } else {
@@ -141,7 +154,19 @@ public class FeedAdapter extends BaseAdapter {
 
             }
         }
-
         return v;
     }
+
+    private void changeRecipeBookmark(int position) {
+        RecipeFeed recipe = (RecipeFeed) feeds.get(position);
+        recipe.changeBookmark();
+        if (recipe.isBookmarked()) {
+            bookmark.setImageResource(R.drawable.ic_bookmarked);
+            Toast.makeText(context, "Resep berhasil ditandai", Toast.LENGTH_SHORT).show();
+        } else {
+            bookmark.setImageResource(R.drawable.ic_not_bookmarked);
+            Toast.makeText(context, "Resep berhasil tidak ditandai", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
