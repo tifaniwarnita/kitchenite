@@ -151,7 +151,6 @@ public class FeedAdapter extends BaseAdapter {
                 userName.setText(update.getUserName());
                 content.setText(update.getContent());
                 detail.setText(update.getRecipeName()); //TODO: follow atau made
-
             }
         }
         return v;
