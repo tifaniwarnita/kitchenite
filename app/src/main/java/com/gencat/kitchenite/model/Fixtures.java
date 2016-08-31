@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class Fixtures {
     private static ArrayList<Feed> homeFeeds = new ArrayList<>();
     private static ArrayList<Feed> updateFeeds = new ArrayList<>();
+    private static ArrayList<Feed> searchResult = new ArrayList<>();
 
     public static void initializeFixtures() {
         initializeHomeFeeds();
         initializeUpdateFeeds();
+        initializeSearchResult();
     }
 
     private static void initializeHomeFeeds() {
@@ -89,11 +91,29 @@ public class Fixtures {
 
     }
 
+    private static void initializeSearchResult() {
+        searchResult.add(new RecipeFeed("2",
+                "Ayam Saus Pedas",
+                "http://weneedfun.com/wp-content/uploads/2015/10/Beautiful-Food-Photos-8.jpg",
+                'M',
+                20,
+                3.0f,
+                5,
+                true,
+                "1",
+                "Tifani",
+                "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAVmAAAAJGE4ZDYzOTFmLWU5NDQtNGMxYi1hNGJiLWM3MjQwYjI3N2EzOA.jpg"));
+    }
+
     public static ArrayList<Feed> getHomeFeeds() {
         return homeFeeds;
     }
 
     public static ArrayList<Feed> getUpdateFeeds() {
         return updateFeeds;
+    }
+
+    public static ArrayList<Feed> getSearchResult() {
+        return searchResult;
     }
 }
